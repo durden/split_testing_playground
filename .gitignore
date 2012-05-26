@@ -1,0 +1,10 @@
+*.pyc
+*.swp
+*.db
+*.sqlite
+*.swo
+*.script
+.DS_Store
+local_settings.py
+site_media
+cache
