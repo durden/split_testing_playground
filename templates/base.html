@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Company Name - {% block title %} {% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                {% block nav %}
+                                    <li><a href="/">Home</a></li>
+                                    <li><a href="/about">About</a></li>
+                                {% endblock %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% block content %} {% endblock %}
+            <div id="footer">
+                {% block footer %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
