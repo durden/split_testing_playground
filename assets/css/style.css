@@ -1,0 +1,12 @@
+.form-horizontal {
+    margin-top: 20px;
+}
+
+.form-horizontal input {
+    margin-bottom: 15px;
+    display: block;
+}
+
+.control-label {
+    font-size: 17px;
+}
