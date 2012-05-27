@@ -42,6 +42,8 @@ def _get_choice_for_split_test(view_function):
 
 
 def home(request, template_name="registration/register.html"):
+    """Home view"""
+
     if request.method == 'POST':
         choice = request.POST['choice']
         if choice > 0:
