@@ -1,3 +1,7 @@
+"""
+Views for ab_testing project
+"""
+
 from django.shortcuts import render
 
 

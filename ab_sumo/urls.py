@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     url(r'^$', 'ab_sumo.views.home', name='home'),
     url(r'^about/$', 'ab_sumo.views.about', name='about'),
 
-    url(r'^registration/', include('registration.urls')),
+    url(r'^register/', include('registration.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
 )
