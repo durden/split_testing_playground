@@ -13,7 +13,19 @@
                     <input type='text' id="email"/>
                 </div>
             </div>
+            {% if test_choice == 1 %}
+                <div class="control-group">
+                    <label class="control-label" for="first">First Name</label>
+                    <div class="controls">
+                        <input type='text' id="first"/>
+                    </div>
 
+                    <label class="control-label" for="email">Last Name</label>
+                    <div class="controls">
+                        <input type='text' id="last"/>
+                    </div>
+                </div>
+            {% endif %}
             <div class="form-actions">
                 <button type="submit" class="btn btn-large btn-primary">Sign up</button>
             </div>
