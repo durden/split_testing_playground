@@ -9,11 +9,14 @@ from django.utils import timezone
 from registration.models import ABTest, TestChoice, TestResult
 
 
-def _get_choice_for_split_test(view_method):
+# TODO: Might be a clever way to turn this into a decorator and just slap it on
+# view functions and 'do the right thing'
+def _get_choice_for_split_test(view_function):
     """
-    Get a choice_id for a split test associated with the given view method
+    Get a choice_id for a split test associated with the given view function
 
-    view_method can be direct reference to view method or string of method
+    view_function can be direct reference to view function or string of
+    function
     Example: 'registration.views.home'
 
     If no split test is running for the given url, 0 will be returned.
@@ -23,7 +26,7 @@ def _get_choice_for_split_test(view_method):
     # running users will automatically see the regular template
     choice = 0
 
-    tests = ABTest.objects.filter(url=reverse(view_method))
+    tests = ABTest.objects.filter(url=reverse(view_function))
     for test in tests:
         now = timezone.now()
         if test.start_date <= now and test.end_date > now:
