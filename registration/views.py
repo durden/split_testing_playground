@@ -43,9 +43,19 @@ def _get_choice_for_split_test(view_function):
 
 def home(request, template_name="registration/register.html"):
     if request.method == 'POST':
+        choice = request.POST['choice']
+        if choice > 0:
+            result = TestResult.objects.get(pk=choice)
+            result.conversions += 1
+            result.save()
+
         template_name = 'registration/thanks.html'
     else:
         # See if there's a test running for this url
         choice = _get_choice_for_split_test('registration.views.home')
+        if choice > 0:
+            result = TestResult.objects.get(pk=choice)
+            result.visitors += 1
+            result.save()
 
     return render(request, template_name, {'test_choice': choice})
