@@ -1,6 +1,16 @@
 from django.db import models
 
 
+def _get_conversion_rate(conversions, visits):
+    """Get conversion rate"""
+    try:
+        conv_rate = round((conversions / float(visits)) * 100, 2)
+    except ZeroDivisionError:
+        conv_rate = None
+
+    return conv_rate
+
+
 class ABTest(models.Model):
     """Model to hold information about AB split test"""
 
@@ -12,18 +22,13 @@ class ABTest(models.Model):
     def __unicode__(self):
         """return unicode representation of object"""
 
-
         choices = TestChoice.objects.filter(test=self)
         results = TestResult.objects.filter(choice__in=list(choices))
         visits = sum([result.visitors for result in results])
         conversions = sum([result.conversions for result in results])
 
-        try:
-            conv_rate = (conversions / float(visits)) * 100
-        except ZeroDivisionError:
-            return u'%s -- Conversion rate: N/A' % (self.name)
-
-        return u'%s -- Conversion rate: %2.2f %%' % (self.name, conv_rate)
+        conv_rate = _get_conversion_rate(conversions, visits)
+        return u'%s -- Conversion rate: %s %%' % (self.name, conv_rate)
 
 
 class TestChoice(models.Model):
@@ -51,5 +56,6 @@ class TestResult(models.Model):
     def __unicode__(self):
         """return unicode representation of object"""
 
-        return u'Choice: %s, Visitors: %d, Conversions: %d' % (
-                    self.choice.description, self.visitors, self.conversions)
+        return u'Choice: %s, Visitors: %d, Conversions: %d, Rate: %s %%' % (
+                    self.choice.description, self.visitors, self.conversions,
+                    _get_conversion_rate(self.conversions, self.visitors))
