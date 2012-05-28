@@ -12,7 +12,7 @@ class ConversionChart(_DrawingEditorMixin, Drawing):
         apply(Drawing.__init__, (self, width, height) + args, kw)
         self._add(self, VerticalBarChart(), name='bar', validate=None,
                   desc=None)
-        self.bar.categoryAxis.categoryNames = ['Conversion', 'Visits']
+        self.bar.categoryAxis.categoryNames = ['Conversion Rate']
         self.bar.categoryAxis.labels.fillColor = None
         self.bar.width = 200
         self.bar.height = 150

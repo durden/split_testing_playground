@@ -1,7 +1,7 @@
 from django.db import models
 
 
-def _get_conversion_rate(conversions, visits):
+def get_conversion_rate(conversions, visits):
     """Get conversion rate"""
     try:
         conv_rate = round((conversions / float(visits)) * 100, 2)
@@ -25,10 +25,11 @@ class ABTest(models.Model):
         choices = TestChoice.objects.filter(test=self)
         results = TestResult.objects.filter(choice__in=list(choices))
         visits = sum([result.visitors for result in results])
+
         conversions = sum([result.conversions for result in results])
 
-        conv_rate = _get_conversion_rate(conversions, visits)
-        return u'%s -- Conversion rate: %s %%' % (self.name, conv_rate)
+        conv_rate = get_conversion_rate(conversions, visits)
+        return u'%s -- Overall conversion rate: %s %%' % (self.name, conv_rate)
 
 
 class TestChoice(models.Model):
@@ -58,4 +59,4 @@ class TestResult(models.Model):
 
         return u'Choice: %s, Visitors: %d, Conversions: %d, Rate: %s %%' % (
                     self.choice.description, self.visitors, self.conversions,
-                    _get_conversion_rate(self.conversions, self.visitors))
+                    get_conversion_rate(self.conversions, self.visitors))

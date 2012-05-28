@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from django.utils import timezone
 
 from registration.models import ABTest, TestChoice, TestResult
+from registration.models import get_conversion_rate
 
 
 def conversion_chart(request, test_id):
@@ -23,14 +24,18 @@ def conversion_chart(request, test_id):
         return HttpResponse(None, 'image/gif')
 
     test = ABTest.objects.get(pk=test_id)
-
     choices = TestChoice.objects.filter(test=test)
-    results = TestResult.objects.filter(choice__in=list(choices))
-    visits = sum([result.visitors for result in results])
-    conversions = sum([result.conversions for result in results])
+    chart_data = []
 
-    data = [conversions, visits]
-    d.bar.data = [data]
+    for choice in choices:
+        results = TestResult.objects.filter(choice=choice)
+
+        for result in results:
+            conv_rate = get_conversion_rate(result.conversions,
+                                            result.visitors)
+            chart_data.append(conv_rate)
+
+    d.bar.data = [chart_data]
     binaryStuff = d.asString('gif')
 
     return HttpResponse(binaryStuff, 'image/gif')
