@@ -19,7 +19,6 @@ def conversion_chart(request, test_id):
     try:
         from registration import charts
         d = charts.ConversionChart()
-        raise ImportError
     except ImportError:
         return HttpResponse(None, 'image/gif')
 
