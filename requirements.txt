@@ -1,4 +1,2 @@
 Django==1.4
-PIL==1.1.7
-reportlab==2.5
 wsgiref==0.1.2
