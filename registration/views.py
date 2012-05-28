@@ -2,11 +2,39 @@
 Views for registration app
 """
 
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 
 from registration.models import ABTest, TestChoice, TestResult
+
+
+def conversion_chart(request, test_id):
+    """
+    Draw simple bar chart depicting conversion rate visually
+    """
+
+    # Protect against PIL/reportlab not installed
+    try:
+        from registration import charts
+        d = charts.ConversionChart()
+        raise ImportError
+    except ImportError:
+        return HttpResponse(None, 'image/gif')
+
+    test = ABTest.objects.get(pk=test_id)
+
+    choices = TestChoice.objects.filter(test=test)
+    results = TestResult.objects.filter(choice__in=list(choices))
+    visits = sum([result.visitors for result in results])
+    conversions = sum([result.conversions for result in results])
+
+    data = [conversions, visits]
+    d.bar.data = [data]
+    binaryStuff = d.asString('gif')
+
+    return HttpResponse(binaryStuff, 'image/gif')
 
 
 # TODO: Might be a clever way to turn this into a decorator and just slap it on
