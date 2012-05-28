@@ -36,19 +36,18 @@ rates.
 
 Run the application:
 
-    - git clone git://github.com/durden/split_testing_playground.git
-    - 'cd' into the appliction directory
-    - Setup the database
-        - python manage.py syncdb (make sure to create admin account)
-    - python manage.py runserver
-    - Browse to http://127.0.0.1:8000/
-    - Login
-    - [Create](http://127.0.0.1:8000/admin/registration/abtest/add/) an A/B
-      test
-    - [Add A/B choices](http://127.0.0.1:8000/admin/registration/testchoice/)
-    - Use the database IDs from these choices to show them in the template
-        - For example see
-          [example](https://github.com/durden/split_testing_playground/blob/master/templates/registration/register.html)
+- git clone git://github.com/durden/split_testing_playground.git
+- 'cd' into the appliction directory
+- Setup the database
+    - python manage.py syncdb (make sure to create admin account)
+- python manage.py runserver
+- Browse to http://127.0.0.1:8000/
+- Login
+- [Create](http://127.0.0.1:8000/admin/registration/abtest/add/) an A/B
+    test
+- [Add A/B choices](http://127.0.0.1:8000/admin/registration/testchoice/)
+- Use the database IDs from these choices to show them in the template
+- For example see [example](https://github.com/durden/split_testing_playground/blob/master/templates/registration/register.html)
 
 I've provided a sample database that will demonstrate the basic use of the
 application.  It includes a single A/B with a few choices.  You can run the
