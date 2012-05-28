@@ -3,27 +3,45 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
+    <span class="pull-right">
+        <a href="/register/" class="btn btn-small btn-primary">Sign up</a>
+        now to join the private beta!
+    </span>
+
     <h1>Spygit</h1>
 
     <h2>Embrace Standards</h2>
     <p>
         Spygit (pronounced '<strong>spig</strong>-uht') is a the premier
-        network to show off (or mourn) your project standards.
-        It removes the burden of manually checking your code against the
+        network to show off (or mourn) your
+        <a href="http://python.org">Python</a> project's standards.
+    </p>
+    <p>
+        Spygit removes the burden of manually checking your code against the
         <a href="http://www.python.org/dev/peps/pep-0008/">pep8</a> standard
         and proving to your team/peers that you are compliant.
     </p>
 
-    <h2>Why</h2>
+    <h2>Why Standards?</h2>
     <ul>
+        <li>
+            <a href="http://python.org">Python</a> publishes a community
+            accepted code
+            <a href="http://www.python.org/dev/peps/pep-0008/">standard</a>
+        </li>
         <li>Ensure all code looks the same</li>
         <li>Help new developers concentrate on code, not style</li>
+        <li>The language is beautiful, your code should be too!</li>
     </ul>
 
-    <h3>How</h3>
-    <p>
-        <a href="/register/" class="btn btn-mini btn-primary">Sign up</a>
-        now to join the private beta!
-    </p>
-
+    <h3>Recently Spy'ed Projects<h3>
+    <ul>
+        <li><a href="http://spygit.durden.webfactional.com/Bub.ly/">Bub.ly</a></li>
+        <li><a href="http://spygit.durden.webfactional.com/buzzfire/">buzzfire</a></li>
+        <li><a href="http://spygit.durden.webfactional.com/crywolf/">crywolf</a></li>
+        <li><a href="http://spygit.durden.webfactional.com/cue/">cue</a></li>
+        <li><a href="http://spygit.durden.webfactional.com/dashline/">dashline</a></li>
+        <li><a href="http://spygit.durden.webfactional.com/descartes-bi/">descartes-bi</a></li>
+        <li><a href="http://spygit.durden.webfactional.com/django/">django</a></li>
+    </ul>
 {% endblock %}
