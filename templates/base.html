@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Company Name - {% block title %} {% endblock %}</title>
+        <title>Spygit - Embrace Standards - {% block title %} {% endblock %}</title>
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}css/style.css">
     </head>
@@ -11,6 +11,8 @@
             <div class="navbar">
                 <div class="navbar-inner">
                     <div class="container">
+                    <a class="brand" href="/">Spygit</a>
+                    <span class="tagline pull-right">embrace standards</span>
                         <div class="nav-collapse">
                             <ul class="nav">
                                 {% block nav %}

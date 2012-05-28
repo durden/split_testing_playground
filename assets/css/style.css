@@ -1,3 +1,11 @@
+body, p {
+    font-size: 15px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
 .form-horizontal {
     margin-top: 20px;
 }
@@ -9,4 +17,11 @@
 
 .control-label {
     font-size: 17px;
+}
+
+.tagline {
+    padding: 10px 10px 11px;
+    color: #ffffff;
+    text-decoration: underline;
+    line-height: 18px;
 }
