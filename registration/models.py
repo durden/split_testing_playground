@@ -12,7 +12,18 @@ class ABTest(models.Model):
     def __unicode__(self):
         """return unicode representation of object"""
 
-        return u'%s' % (self.name)
+
+        choices = TestChoice.objects.filter(test=self)
+        results = TestResult.objects.filter(choice__in=list(choices))
+        visits = sum([result.visitors for result in results])
+        conversions = sum([result.conversions for result in results])
+
+        try:
+            conv_rate = (conversions / float(visits)) * 100
+        except ZeroDivisionError:
+            return u'%s -- Conversion rate: N/A' % (self.name)
+
+        return u'%s -- Conversion rate: %2.2f %%' % (self.name, conv_rate)
 
 
 class TestChoice(models.Model):
