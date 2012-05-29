@@ -6,4 +6,5 @@ admin.autodiscover()
 urlpatterns = patterns('',
     url(r'^$', 'registration.views.home', name='home'),
     url(r'^charts/conversion/(\d)$', 'registration.views.conversion_chart'),
+    url(r'^thanks/$', 'registration.views.thanks', name='thanks'),
 )

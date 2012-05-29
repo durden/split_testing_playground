@@ -2,7 +2,7 @@
 Views for registration app
 """
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.utils import timezone
@@ -88,6 +88,12 @@ def _get_choice_for_split_test(view_function):
     return choice
 
 
+def thanks(request, template_name="registration/thanks.html"):
+    """thanks page"""
+
+    return render(request, template_name)
+
+
 def home(request, template_name="registration/register.html"):
     """Home view"""
 
@@ -103,7 +109,7 @@ def home(request, template_name="registration/register.html"):
                 result.conversions += 1
                 result.save()
 
-        template_name = 'registration/thanks.html'
+        return HttpResponseRedirect('/register/thanks')
     else:
         # See if there's a test running for this url
         choice = _get_choice_for_split_test('registration.views.home')
