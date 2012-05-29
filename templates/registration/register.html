@@ -11,7 +11,7 @@
                 <label class="control-label" for="email">*E-mail</label>
                 <div class="controls">
                     {{ form.email.errors }}
-                    <input type='text' id="email" name="email"/>
+                    <input type='text' id="email" name="email" value="{{form.email.value}}"/>
                 </div>
             </div>
             {% if test_choice == 1 %}
