@@ -124,6 +124,10 @@ def home(request, template_name="registration/register.html"):
                 result.conversions += 1
                 result.save()
 
+        # NOTE: The data could easily be saved here into the standard django
+        # User model or a custom one.  However, the point of this app is just
+        # to demonstrate A/B split testing, not saving user information.
+
         return HttpResponseRedirect('/register/thanks')
     else:
         # See if there's a test running for this url

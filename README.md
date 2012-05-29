@@ -51,6 +51,9 @@ The application can easily be deployed to [heroku](http://heroku.com) by:
     - git push heroku master
     - heroku run python manage.py syncdb
 
+You can see the currently deployed version on heroku
+[here](http://split-testing.herokuapp.com).
+
 ####Usage
 
 Run the application:
