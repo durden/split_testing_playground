@@ -34,7 +34,7 @@ def conversion_chart(request, test_id):
             conv_rate = get_conversion_rate(result.conversions,
                                             result.visitors)
             chart_data.append(conv_rate)
-            chart_labels.append(result.choice.description[0:20])
+            chart_labels.append(result.choice.description[0:30])
 
     try:
         from registration import charts

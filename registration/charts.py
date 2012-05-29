@@ -9,14 +9,14 @@ from reportlab.graphics.charts.barcharts import VerticalBarChart
 def conversion_chart(data, labels):
     """Create chart that can be drawn as a gif with given data/labels"""
 
-    drawing = Drawing(400, 370)
+    drawing = Drawing(500, 400)
     bc = VerticalBarChart()
 
-    bc.x = 50
-    bc.y = 50
+    bc.x = 80
+    bc.y = 80
 
-    bc.height = 300
-    bc.width = 300
+    bc.height = 290
+    bc.width = 390
 
     bc.data = data
 

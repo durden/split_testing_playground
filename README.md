@@ -82,3 +82,7 @@ password.
   about having to litter the code with a bunch of if statements, just haven't
   found a really good way to do it yet.
     - See [here](https://github.com/durden/split_testing_playground/blob/master/templates/registration/register.html#L31)
+- Devise a better way to refer to test choices
+    - Currently the application only tracks a long description.  This is
+      useful, but it would probably be better to have a 'shorter' way to refer
+      to them.  This would look much better on the vertical bar chart x-axes.
