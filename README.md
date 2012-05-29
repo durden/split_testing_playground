@@ -53,3 +53,19 @@ I've provided a sample database that will demonstrate the basic use of the
 application.  It includes a single A/B with a few choices.  You can run the
 existing test by modifying the start/end dates of the test.  You can also see
 that there are already 'fake' results included for demonstration.
+
+#####Technologies Used
+
+- [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
+    - Nice and easy layouts, icon sets, etc.
+
+#####Improvement Ideas
+
+- Might be able to turn the main split testing view code into a decorator and
+  more easily scale the idea to multiple views in the future
+    - See [main view](https://github.com/durden/split_testing_playground/blob/master/registration/views.py#L46)
+- Add a template tag to somehow more gracefully handle the switching on/off
+  different UI choices for the actual test in the template.  I'm not too crazy
+  about having to litter the code with a bunch of if statements, just haven't
+  found a really good way to do it yet.
+    - See [here](https://github.com/durden/split_testing_playground/blob/master/templates/registration/register.html#L31)
