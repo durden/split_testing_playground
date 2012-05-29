@@ -1,2 +1,2 @@
-PIL==1.1.7
+PIL
 reportlab==2.5
