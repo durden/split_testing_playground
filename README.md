@@ -32,6 +32,16 @@ file.  These requirements are not stricly necessary to run the application.
 However, they allow the application to show a veritcal bar chart for conversion
 rates.
 
+###Deploy
+
+The application can easily be deployed to [heroku](http://heroku.com) by:
+
+    - git clone git://github.com/durden/split_testing_playground.git
+    - 'cd' into the appliction directory
+    - heroku create --stack cedar
+    - git push heroku master
+    - heroku run python manage.py syncdb
+
 ####Usage
 
 Run the application:
