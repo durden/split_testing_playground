@@ -9,6 +9,7 @@ from django.utils import timezone
 
 from registration.models import ABTest, TestChoice, TestResult
 from registration.models import get_conversion_rate
+from registration.forms import RegistrationForm
 
 
 def conversion_chart(request, test_id):
@@ -97,9 +98,22 @@ def thanks(request, template_name="registration/thanks.html"):
 def home(request, template_name="registration/register.html"):
     """Home view"""
 
+    # NOTE: Only using the actual 'django form' on the POST side b/c we could
+    # be running split tests on the actual form elements (some are shown and
+    # some aren't, etc.).  So, it's just easier to render the form ourselves on
+    # the template side.
+
     if request.method == 'POST':
-        choice = request.POST['choice']
-        if choice > 0:
+        form = RegistrationForm(request.POST)
+
+        if not form.is_valid():
+            return render(request, template_name,
+                                {'test_choice': int(request.POST['choice']),
+                                 'form': form})
+
+        if form.cleaned_data['choice'] > 0:
+            choice = form.cleaned_data['choice']
+
             try:
                 result = TestResult.objects.get(pk=choice)
             except TestResult.DoesNotExist:

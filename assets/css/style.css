@@ -23,6 +23,10 @@ h2, h3, h4, h5, h6 {
     font-size: 17px;
 }
 
+ul.errorlist li {
+  color: #b94a48;
+}
+
 .tagline {
     padding: 10px 10px 11px;
     color: #ffffff;

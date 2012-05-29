@@ -8,8 +8,9 @@
         {% csrf_token %}
         <fieldset>
             <div class="control-group">
-                <label class="control-label" for="email">E-mail</label>
+                <label class="control-label" for="email">*E-mail</label>
                 <div class="controls">
+                    {{ form.email.errors }}
                     <input type='text' id="email" name="email"/>
                 </div>
             </div>
@@ -38,4 +39,5 @@
         </fieldset>
         <input type="hidden" id="choice" name="choice" value="{{ test_choice }}"/>
     </form>
+    <p class="help">* Field required</p>
 {% endblock %}
