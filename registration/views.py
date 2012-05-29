@@ -23,7 +23,11 @@ def conversion_chart(request, test_id):
     except ImportError:
         return HttpResponse(None, 'image/gif')
 
-    test = ABTest.objects.get(pk=test_id)
+    try:
+        test = ABTest.objects.get(pk=test_id)
+    except DoesNotExist:
+        return HttpResponse(None, 'image/gif')
+
     choices = TestChoice.objects.filter(test=test)
     chart_data = []
 
@@ -39,6 +43,17 @@ def conversion_chart(request, test_id):
     binaryStuff = d.asString('gif')
 
     return HttpResponse(binaryStuff, 'image/gif')
+
+
+def _create_result_object(choice_id):
+    """Create a TestResult object associated with the given choice_id"""
+
+    try:
+        choice_obj = TestChoice.objects.get(pk=choice_id)
+    except TestChoice.DoesNotExist:
+        return None
+
+    return TestResult(conversions=0, visitors=0, choice=choice_obj)
 
 
 # TODO: Might be a clever way to turn this into a decorator and just slap it on
@@ -79,17 +94,27 @@ def home(request, template_name="registration/register.html"):
     if request.method == 'POST':
         choice = request.POST['choice']
         if choice > 0:
-            result = TestResult.objects.get(pk=choice)
-            result.conversions += 1
-            result.save()
+            try:
+                result = TestResult.objects.get(pk=choice)
+            except TestResult.DoesNotExist:
+                result = _create_result_object(choice)
+
+            if result is not None:
+                result.conversions += 1
+                result.save()
 
         template_name = 'registration/thanks.html'
     else:
         # See if there's a test running for this url
         choice = _get_choice_for_split_test('registration.views.home')
         if choice > 0:
-            result = TestResult.objects.get(pk=choice)
-            result.visitors += 1
-            result.save()
+            try:
+                result = TestResult.objects.get(pk=choice)
+            except TestResult.DoesNotExist:
+                result = _create_result_object(choice)
+
+            if result is not None:
+                result.visitors += 1
+                result.save()
 
     return render(request, template_name, {'test_choice': choice})
