@@ -27,6 +27,11 @@ ul.errorlist li {
   color: #b94a48;
 }
 
+.help, p.help {
+    font-size: 10px;
+    color: #999;
+}
+
 .tagline {
     padding: 10px 10px 11px;
     color: #ffffff;

@@ -4,6 +4,12 @@
 
 {% block content %}
     <h1> Register </h1>
+
+    {% if test_choice == 4 %}
+        <p class="pull-right">Don't worry! Spam is for jerks, and jerks we are not.</p>
+        <br class="clear"/>
+    {% endif %}
+
     <form class="form-horizontal" method="post" action="/register/">
         {% csrf_token %}
         <fieldset>
@@ -39,5 +45,10 @@
         </fieldset>
         <input type="hidden" id="choice" name="choice" value="{{ test_choice }}"/>
     </form>
+
+    {% if test_choice == 3 %}
+        <p class="pull-right">Don't worry! Spam is for jerks, and jerks we are not.</p>
+    {% endif %}
+
     <p class="help">* Field required</p>
 {% endblock %}
