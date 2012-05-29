@@ -23,11 +23,20 @@ designated in the
 file.
 
     - pip install -r requirements.txt
-    - pip install -r chart_requirements.txt
+
+You can also install the bare minimum for running/testing the application
+locally with:
+
+    - pip install -r requirements/local_development.txt
+
+Also, to install the optional requirements for seeing a conversion rate chart
+in admin UI install the chart requirements with:
+
+    - pip install -r requirements/charts.txt
 
 Currently [PIL](http://www.pythonware.com/products/pil/) and
 [ReportLab](http://www.reportlab.com/software/opensource/) are specified in the
-[chart_requirements.txt](https://github.com/durden/split_testing_playground/blob/master/chart_requirements.txt)
+[charts.txt](https://github.com/durden/split_testing_playground/blob/master/requirements/charts.txt)
 file.  These requirements are not stricly necessary to run the application.
 However, they allow the application to show a veritcal bar chart for conversion
 rates.
@@ -37,7 +46,7 @@ rates.
 The application can easily be deployed to [heroku](http://heroku.com) by:
 
     - git clone git://github.com/durden/split_testing_playground.git
-    - 'cd' into the appliction directory
+    - 'cd' into the application directory
     - heroku create --stack cedar
     - git push heroku master
     - heroku run python manage.py syncdb

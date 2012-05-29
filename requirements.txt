@@ -1,3 +1,3 @@
-Django==1.4
-wsgiref==0.1.2
-psycopg2==2.4.5
+-r requirements/local_development.txt
+-r requirements/production.txt
+-r requirements/charts.txt
