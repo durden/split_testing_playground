@@ -64,6 +64,9 @@ application.  It includes a single A/B with a few choices.  You can run the
 existing test by modifying the start/end dates of the test.  You can also see
 that there are already 'fake' results included for demonstration.
 
+**The login for the sample database is 'test_user' with 'password' as the
+password.
+
 #####Technologies Used
 
 - [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
