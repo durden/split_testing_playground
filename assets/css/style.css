@@ -23,6 +23,13 @@ h2, h3, h4, h5, h6 {
     font-size: 17px;
 }
 
+#footer, #footer p {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+
 ul.errorlist li {
   color: #b94a48;
 }
