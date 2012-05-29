@@ -4,7 +4,7 @@ from django.db import models
 def get_conversion_rate(conversions, visits):
     """Get conversion rate"""
     try:
-        conv_rate = round((conversions / float(visits)) * 100, 2)
+        conv_rate = round((conversions / float(visits)) * 100, 4)
     except ZeroDivisionError:
         conv_rate = None
 
