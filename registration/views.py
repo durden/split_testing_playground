@@ -19,18 +19,13 @@ def conversion_chart(request, test_id):
 
     # Protect against PIL/reportlab not installed
     try:
-        from registration import charts
-        d = charts.ConversionChart()
-    except ImportError:
-        return HttpResponse(None, 'image/gif')
-
-    try:
         test = ABTest.objects.get(pk=test_id)
-    except DoesNotExist:
+    except ABTest.DoesNotExist:
         return HttpResponse(None, 'image/gif')
 
     choices = TestChoice.objects.filter(test=test)
     chart_data = []
+    chart_labels = []
 
     for choice in choices:
         results = TestResult.objects.filter(choice=choice)
@@ -39,8 +34,14 @@ def conversion_chart(request, test_id):
             conv_rate = get_conversion_rate(result.conversions,
                                             result.visitors)
             chart_data.append(conv_rate)
+            chart_labels.append(result.choice.description[0:20])
 
-    d.bar.data = [chart_data]
+    try:
+        from registration import charts
+        d = charts.conversion_chart([chart_data], chart_labels)
+    except ImportError:
+        return HttpResponse(None, 'image/gif')
+
     binaryStuff = d.asString('gif')
 
     return HttpResponse(binaryStuff, 'image/gif')
