@@ -7,8 +7,6 @@ Simple app to:
 
 ##Why
 
-----------
-
 I wanted to play around with some ideas to learn more about A/B testing.  It's
 far from complete.  It mainly serves as a platform for demonstrating one way to
 automate scheduling an A/B test for a given portion of time.
@@ -17,9 +15,7 @@ Using this approach, admin users could login and 'schedule' an A/B test.  Then,
 the designer/developer could discuss the test goals with the admin and execute
 the code for the test with very minimal effort.
 
-###Install
-
-----------
+##Install
 
 This application can be installed simply by installing the requirements
 designated in the
@@ -36,9 +32,7 @@ file.  These requirements are not stricly necessary to run the application.
 However, they allow the application to show a veritcal bar chart for conversion
 rates.
 
-###Deploy
-
-----------
+##Deploy
 
 The application can easily be deployed to [heroku](http://heroku.com) by:
 
