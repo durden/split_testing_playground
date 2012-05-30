@@ -7,6 +7,8 @@ Simple app to:
 
 ##Why
 
+----------
+
 I wanted to play around with some ideas to learn more about A/B testing.  It's
 far from complete.  It mainly serves as a platform for demonstrating one way to
 automate scheduling an A/B test for a given portion of time.
@@ -16,6 +18,8 @@ the designer/developer could discuss the test goals with the admin and execute
 the code for the test with very minimal effort.
 
 ###Install
+
+----------
 
 This application can be installed simply by installing the requirements
 designated in the
@@ -34,6 +38,8 @@ rates.
 
 ###Deploy
 
+----------
+
 The application can easily be deployed to [heroku](http://heroku.com) by:
 
     - git clone git://github.com/durden/split_testing_playground.git
@@ -45,7 +51,9 @@ The application can easily be deployed to [heroku](http://heroku.com) by:
 You can see the currently deployed version on heroku
 [here](http://split-testing.herokuapp.com).
 
-####Usage
+###Usage
+
+----------
 
 Run the application:
 
@@ -72,12 +80,16 @@ that there are already 'fake' results included for demonstration.
 **The login for the sample database is 'test_user' with 'password' as the
 password.
 
-#####Technologies Used
+####Technologies Used
+
+----------
 
 - [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
     - Nice and easy layouts, icon sets, etc.
 
 #####Improvement Ideas
+
+----------
 
 - Might be able to turn the main split testing view code into a decorator and
   more easily scale the idea to multiple views in the future
