@@ -50,9 +50,11 @@ You can see the currently deployed version on heroku
 Run the application:
 
 - git clone git://github.com/durden/split_testing_playground.git
-- 'cd' into the appliction directory
-- Setup the database
+- 'cd' into the application directory
+- Setup the database (unless you would like to use the provided one)
     - python manage.py syncdb (make sure to create admin account)
+    - Again, this is an optional step since the git repo includes a sample
+      database that will automatically be connected to.
 - python manage.py runserver
 - Browse to http://127.0.0.1:8000/
 - Login
