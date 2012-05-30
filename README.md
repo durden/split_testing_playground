@@ -37,7 +37,7 @@ rates.
 The application can easily be deployed to [heroku](http://heroku.com) by:
 
     - git clone git://github.com/durden/split_testing_playground.git
-    - 'cd' into the appliction directory
+    - 'cd' into the application directory
     - heroku create --stack cedar
     - git push heroku master
     - heroku run python manage.py syncdb
