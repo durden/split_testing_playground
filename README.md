@@ -64,7 +64,7 @@ Run the application:
     test
 - [Add A/B choices](http://127.0.0.1:8000/admin/registration/testchoice/)
 - Use the database IDs from these choices to show them in the template
-- For example see [example](https://github.com/durden/split_testing_playground/blob/master/templates/registration/register.html)
+- For example see [register template](https://github.com/durden/split_testing_playground/blob/master/templates/registration/register.html)
 
 I've provided a sample database that will demonstrate the basic use of the
 application.  It includes a single A/B with a few choices.  You can run the
